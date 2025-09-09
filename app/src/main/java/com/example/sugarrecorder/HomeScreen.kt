@@ -255,6 +255,9 @@ fun FirstLaunchChecker() {
         }
     }
     if (showDialog) {
+        val localEatTimes = remember {
+            eatTimes.mapValues { it.value.toMutableList() }.toMutableMap()
+        }
         BasicAlertDialog(
             onDismissRequest = {showDialog=false
             EatTimesViewModel.reset()}
@@ -275,7 +278,7 @@ fun FirstLaunchChecker() {
 
                     Spacer(modifier = Modifier.height(16.dp))
 
-                    for ((key,value) in eatTimes){
+                    for ((key,value) in localEatTimes){
                         inputTimes(key,value)
                     }
                     Spacer(modifier = Modifier.height(24.dp))
@@ -293,7 +296,14 @@ fun FirstLaunchChecker() {
                         Spacer(modifier = Modifier.width(8.dp))
                         TextButton(onClick = {
                             // Handle OK action
-                            showDialog = false }) {
+                            showDialog = false
+                            for ((key, value) in localEatTimes) {
+                                val hour = value[0]
+                                val minute = value[1]
+                                if (hour != null && minute != null) {
+                                    EatTimesViewModel.updateTime(key, hour, minute)
+                                }
+                            }}) {
                             Text("OK")
                         }
                     }
@@ -310,6 +320,11 @@ fun inputTimes(
 ) {
     var hour by remember { mutableStateOf(value[0]?.toString() ?: "") }
     var minute by remember { mutableStateOf(value[1]?.toString() ?: "") }
+
+    LaunchedEffect(hour, minute) {
+        value[0] = hour.toIntOrNull()
+        value[1] = minute.toIntOrNull()
+    }
 
     Column(
         modifier = Modifier
@@ -350,7 +365,6 @@ fun inputTimes(
             )
         }
     }
-    EatTimesViewModel.updateTime(key,hour.toInt(),minute.toInt())
 }
 
 fun getInitialTriggerTime(hour: Int, minute: Int): Long {

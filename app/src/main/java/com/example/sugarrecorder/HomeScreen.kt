@@ -41,7 +41,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.LifecycleCoroutineScope
-import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -57,12 +56,14 @@ fun HomeScreen(
     db: RecordsDatabase,
     lifecycleScope: LifecycleCoroutineScope,
 ){
+
     //checking if its users first time launching the app
     FirstLaunchChecker()
     val context = LocalContext.current
     val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
     var selectedDate by remember { mutableStateOf<LocalDate>(LocalDate.now()) }
 
+    val ids = mapOf("Breakfast" to listOf(0,1) , "Lunch" to listOf(2,3) , "Dinner" to listOf(4,5))
     //setting up notifications
     val eatTimes=EatTimesViewModel.eatTimes
     LaunchedEffect (eatTimes){  eatTimes.forEach { (key, value) ->
@@ -71,8 +72,12 @@ fun HomeScreen(
         } else null
 
         if (triggerTime != null) {
-            scheduleNotification(context, triggerTime - (60 * 60 * 1000), "It's time to measure your Before $key")
-            scheduleNotification(context, triggerTime + (60 * 60 * 1000), "It's time to measure your After $key")
+            scheduleNotification(context, triggerTime - (60 * 60 * 1000), "It's time to measure your Before $key",
+                ids[key]?.get(0) ?: -1
+            )
+            scheduleNotification(context, triggerTime + (60 * 60 * 1000), "It's time to measure your After $key",
+                ids[key]?.get(1) ?: -1
+            )
         }
     } }
 

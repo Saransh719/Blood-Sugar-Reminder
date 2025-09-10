@@ -105,7 +105,7 @@ class MainActivity : ComponentActivity() {
             val currentRoute = navBackStackEntry?.destination?.route
             Scaffold (modifier = Modifier.fillMaxWidth(),
                 topBar = {TopAppBar(title = { Text(when (currentRoute) {
-                        Home.route -> "Sugar Recorder"
+                        Home.route -> "Blood Sugar Recorder"
                         settings.route -> "Settings"
                         else -> ""
                     })

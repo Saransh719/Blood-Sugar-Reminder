@@ -1,4 +1,4 @@
-package com.example.sugarrecorder.ui.theme
+package com.saransh.sugarRecorder.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle

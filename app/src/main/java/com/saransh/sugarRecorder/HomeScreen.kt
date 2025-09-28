@@ -1,4 +1,4 @@
-package com.example.sugarrecorder
+package com.saransh.sugarRecorder
 
 import android.app.DatePickerDialog
 import android.content.Context

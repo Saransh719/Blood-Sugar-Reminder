@@ -1,4 +1,4 @@
-package com.example.sugarrecorder
+package com.saransh.sugarRecorder
 
 import android.widget.Toast
 import androidx.compose.foundation.layout.Column

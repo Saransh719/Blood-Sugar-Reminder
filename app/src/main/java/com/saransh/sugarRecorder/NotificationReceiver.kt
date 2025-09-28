@@ -1,4 +1,4 @@
-package com.example.sugarrecorder
+package com.saransh.sugarRecorder
 
 import android.annotation.SuppressLint
 import android.app.AlarmManager

@@ -1,4 +1,4 @@
-package com.example.sugarrecorder.ui.theme
+package com.saransh.sugarRecorder.ui.theme
 
 import androidx.compose.ui.graphics.Color
 

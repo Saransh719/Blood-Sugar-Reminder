@@ -1,4 +1,4 @@
-package com.example.sugarrecorder
+package com.saransh.sugarRecorder
 
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf

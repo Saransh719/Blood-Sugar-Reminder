@@ -1,4 +1,4 @@
-package com.example.sugarrecorder
+package com.saransh.sugarRecorder
 
 import android.app.AlarmManager
 import android.content.Context
@@ -27,7 +27,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
-import com.example.sugarrecorder.ui.theme.SugarRecorderTheme
+import com.saransh.sugarRecorder.ui.theme.SugarRecorderTheme
 import android.Manifest
 import android.app.NotificationManager
 

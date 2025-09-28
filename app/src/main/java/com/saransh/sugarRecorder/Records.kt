@@ -1,4 +1,4 @@
-package com.example.sugarrecorder
+package com.saransh.sugarRecorder
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao

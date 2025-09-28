@@ -1,4 +1,4 @@
-package com.example.sugarrecorder
+package com.saransh.sugarRecorder
 
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home

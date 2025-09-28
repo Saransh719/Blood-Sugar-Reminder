@@ -6,11 +6,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.sugarrecorder"
+    namespace = "com.saransh.sugarRecorder"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.sugarrecorder"
+        applicationId = "com.saransh.sugarRecorder"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -21,6 +21,9 @@ android {
 
     buildTypes {
         release {
+            ndk{
+                debugSymbolLevel = "FULL"
+            }
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
